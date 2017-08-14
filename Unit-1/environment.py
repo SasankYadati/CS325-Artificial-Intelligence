@@ -89,9 +89,27 @@ class environment:
         returns the resulting state.
         '''
 
-        result_state = environment()
+        result = environment()
 
         for i in range(0, 9):
-            result_state.state[i] = self.state[i]
+            result.state[i] = self.state[i]
 
-        pass
+        blank_pos = self.state.find(' ')
+
+        if action=='UP':
+            result.state[blank_pos] = result.state[blank_pos-3]
+            result.state[blank_pos-3] = ' '
+        elif action=='LEFT':
+            result.state[blank_pos] = result.state[blank_pos-1]
+            result.state[blank_pos-1] = ' '
+        elif action=='DOWN':
+            result.state[blank_pos] = result.state[blank_pos+3]
+            result.state[blank_pos+3] = ' '
+        elif action=='RIGHT':
+            result.state[blank_pos] = result.state[blank_pos+1]
+            result.state[blank_pos+1] = ' '
+
+        result.parent = self
+        result.path_cost = self.path_cost + 1
+
+        return result
