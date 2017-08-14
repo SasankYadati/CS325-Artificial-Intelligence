@@ -115,14 +115,43 @@ class environment:
 
         return result
 
+    def goal_test(self):
+        '''
+        returns True, if the state is a goal state, False otherwise.
+
+        '''
+        i = 1
+        while i<=8 and self.state[i]==str(i):
+            i += 1
+        if i<=8:
+            return False
+        return True
+
+
 if __name__=='__main__':
     print('Running tests')
+
     curr_state = environment()
-    print("Test state : {}".format(curr_state.state))
     actions = curr_state.actions()
-    print("Actions on test state : {}".format(actions))
     new_state = curr_state.transistion(action=actions[0])
+
+    # print the states
+    print("Current state : {}".format(curr_state.state))
     print("Resulting state : {}".format(new_state.state))
+
+    # print the actions
+    print("Actions on current state : {}".format(actions))
+    print("Actions on resulting state : {}".format(new_state.actions()))
+
+    # print the path costs
     print("Path cost of curr_state : {}".format(curr_state.path_cost))
     print("Path cost of resulting state : {}".format(new_state.path_cost))
+
+    # create a goal state for testing purposes
+    goal = environment()
+    goal.state = [' ', '1', '2', '3', '4', '5', '6', '7', '8']
     
+    # testing goal_test() function
+    print("Goal test on a goal state : {}".format(goal.goal_test()))
+    print("Goal test on current state : {}".format(curr_state.goal_test()))
+    print("Goal test on resulting state : {}".format(new_state.goal_test()))
