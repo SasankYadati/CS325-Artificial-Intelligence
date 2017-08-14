@@ -1,3 +1,4 @@
+import random
 class environment:
     '''
     The environment is a 8puzzle board. Each cell
@@ -20,9 +21,9 @@ class environment:
 
     def __init__(self):
         self.state = list()
-        # initialize all the cells with -1
-        for i in range(0,9):
-            self.state.append('-1')
+        # initialize all the cells randomly
+        self.state = [' ','1','2','3','4','5','6','7','8']
+        random.shuffle(self.state)
 
         self.path_cost = 0
         self.parent = None
@@ -41,7 +42,7 @@ class environment:
 
         actions = list()
 
-        blank_pos = self.state.find(' ')
+        blank_pos = self.state.index(' ')
 
         if blank_pos==0:
             actions.append('DOWN')
@@ -94,7 +95,7 @@ class environment:
         for i in range(0, 9):
             result.state[i] = self.state[i]
 
-        blank_pos = self.state.find(' ')
+        blank_pos = self.state.index(' ')
 
         if action=='UP':
             result.state[blank_pos] = result.state[blank_pos-3]
@@ -113,3 +114,15 @@ class environment:
         result.path_cost = self.path_cost + 1
 
         return result
+
+if __name__=='__main__':
+    print('Running tests')
+    curr_state = environment()
+    print("Test state : {}".format(curr_state.state))
+    actions = curr_state.actions()
+    print("Actions on test state : {}".format(actions))
+    new_state = curr_state.transistion(action=actions[0])
+    print("Resulting state : {}".format(new_state.state))
+    print("Path cost of curr_state : {}".format(curr_state.path_cost))
+    print("Path cost of resulting state : {}".format(new_state.path_cost))
+    
