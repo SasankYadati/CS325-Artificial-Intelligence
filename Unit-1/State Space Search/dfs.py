@@ -41,7 +41,7 @@ class DFSAgent:
 
         return action
 
-    def find_goal(self, initial_state, goal_state):
+    def find_path(self, initial_state, goal_state):
         '''
         given the agent's initial state and desired goal state,
         returns a sequence of actions to reach the goal from the initial
