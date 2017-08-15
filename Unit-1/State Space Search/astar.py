@@ -19,41 +19,20 @@ class AStarAgent:
     '''
 
     def __init__(self):
-        self.frontier = deque() # append() and popleft()
-        self.explored = set() # add() and remove()
+        self.frontier = deque() # a list of all nodes that are generated but not explored
+        self.explored = set() # set of all the visited states
+        self.plan = deque() # a sequence of actions to reach the goal
 
-    def compute_action(self, curr_state):
-        '''
-        returns the best possible action to reach the goal using the plan
-        computed by A* Search.
-        '''
-
-        if curr_state.goal_test():
-            # reached the goal state
-            # do nothing
-            return None
-
-        possible_actions = curr_state.actions()
-
-        action = ''
-
-        pass
-
-        return action
-
-    def find_path(self, initial_state, goal_state):
+    def find_solution(self, initial_state, goal_state):
         '''
         given the agent's initial state and desired goal state,
         returns a sequence of actions to reach the goal from the initial
         state.
         '''
 
-        # a sequence of actions to be taken in order to reach the goal
-        action_plan = list()
-
         pass
 
-        return action_plan
+        return self.plan
 
 if __name__ == '__main__':
     # run some tests
