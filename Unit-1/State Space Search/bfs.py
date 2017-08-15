@@ -14,8 +14,6 @@ class BFSAgent:
     by planning its way from initial state to the goal..
 
     Search Strategy : Breadth First Search
-
-    The agent additionally uses data structures like queue and set.
     '''
 
     def __init__(self):

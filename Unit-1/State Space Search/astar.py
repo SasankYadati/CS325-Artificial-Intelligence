@@ -13,9 +13,10 @@ class AStarAgent:
     an environment and take an action to maximize its performance measure
     by planning its way from initial state to the goal.
 
-    Search Strategy : A* Search ( using heuristics)
+    Search Strategy : A* Search (using heuristics**)
 
-    The agent additionally uses data structures like queue, stack and set.
+    ** heuristics is a design characteristic which depends on the environment,
+    but is defined by the agent.
     '''
 
     def __init__(self):

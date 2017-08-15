@@ -14,8 +14,6 @@ class DFSAgent:
     by planning its way from initial state to the goal.
 
     Search Strategy : Depth First Search
-
-    The agent additionally uses data structures like queue, stack and set.
     '''
 
     def __init__(self):
@@ -33,7 +31,7 @@ class DFSAgent:
         pass
 
         return self.plan
-        
+
 if __name__ == '__main__':
     # run some tests
     pass
