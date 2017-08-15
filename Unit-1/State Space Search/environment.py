@@ -121,18 +121,17 @@ class environment:
 
         return result
 
-    def goal_test(self):
+    def goal_test(self, goal_state):
         '''
         returns True, if the state is a goal state, False otherwise.
 
         '''
-        i = 1
-        while i<=8 and self.state[i]==str(i):
-            i += 1
-        if i<=8:
-            return False
-        return True
-
+        i = 0
+        while i<=8 and self.state[i] == goal_state[i]:
+            i+=1
+        if i==9:
+            return True
+        return False
 
 if __name__=='__main__':
     print('Running tests')
@@ -158,6 +157,6 @@ if __name__=='__main__':
     goal.state = [' ', '1', '2', '3', '4', '5', '6', '7', '8']
 
     # testing goal_test() function
-    print("Goal test on a goal state : {}".format(goal.goal_test()))
-    print("Goal test on current state : {}".format(curr_state.goal_test()))
-    print("Goal test on resulting state : {}".format(new_state.goal_test()))
+    print("Goal test on a goal state : {}".format(goal.goal_test(goal.state)))
+    print("Goal test on current state : {}".format(curr_state.goal_test(goal.state)))
+    print("Goal test on resulting state : {}".format(new_state.goal_test(goal.state)))
