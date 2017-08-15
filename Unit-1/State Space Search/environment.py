@@ -5,18 +5,16 @@ date : 14/08/2017
 '''
 
 import random
+
 class environment:
     '''
-    The environment is a 8puzzle board. Each cell
-    contains a number from 1 to 8 or is empty.
+    The environment is a 8puzzle board.
+    Each cell contains a number from 1 to 8 or is empty.
 
     The initial state of the environment is a random configuration
     of the tiles in the 3x3 board.
 
-    A state of an environment is the configuration of the
-    environment at a particular instance.
-
-    Possible Actions in this Environment : Up, Down, Right, Left
+    Possible actions in this environment : Up, Down, Right, Left
 
     Every state remembers the path cost it took to reach the current
     state from the initial state.
