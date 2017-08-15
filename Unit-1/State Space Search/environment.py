@@ -1,3 +1,9 @@
+'''
+environment8puzzle.py
+author : happystick
+date : 14/08/2017
+'''
+
 import random
 class environment:
     '''
@@ -19,11 +25,13 @@ class environment:
     has been resulted from).
     '''
 
-    def __init__(self):
-        self.state = list()
-        # initialize all the cells randomly
-        self.state = [' ','1','2','3','4','5','6','7','8']
-        random.shuffle(self.state)
+    def __init__(self, initial_state):
+        if initial_state:
+            self.state = initial_state
+        else:
+            # initialize all the cells randomly
+            self.state = [' ','1','2','3','4','5','6','7','8']
+            random.shuffle(self.state)
 
         self.path_cost = 0
         self.parent = None
@@ -150,7 +158,7 @@ if __name__=='__main__':
     # create a goal state for testing purposes
     goal = environment()
     goal.state = [' ', '1', '2', '3', '4', '5', '6', '7', '8']
-    
+
     # testing goal_test() function
     print("Goal test on a goal state : {}".format(goal.goal_test()))
     print("Goal test on current state : {}".format(curr_state.goal_test()))
