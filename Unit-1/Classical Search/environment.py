@@ -6,7 +6,7 @@ date : 14/08/2017
 
 import random
 
-class environment:
+class Environment:
     '''
     The environment is a 8puzzle board.
     Each cell contains a number from 1 to 8 or is empty.
@@ -23,9 +23,11 @@ class environment:
     has been resulted from).
     '''
 
-    def __init__(self, initial_state):
+    def __init__(self, initial_state=None, goal=False):
         if initial_state:
             self.state = initial_state
+        elif goal:
+            self.state = [' ','1','2','3','4','5','6','7','8']
         else:
             # initialize all the cells randomly
             self.state = [' ','1','2','3','4','5','6','7','8']
@@ -96,7 +98,7 @@ class environment:
         returns the resulting state.
         '''
 
-        result = environment()
+        result = Environment()
 
         for i in range(0, 9):
             result.state[i] = self.state[i]
@@ -121,13 +123,12 @@ class environment:
 
         return result
 
-    def goal_test(self, goal_state):
+    def goal_test(self, goal):
         '''
         returns True, if the state is a goal state, False otherwise.
-
         '''
         i = 0
-        while i<=8 and self.state[i] == goal_state[i]:
+        while i<=8 and self.state[i] == goal.state[i]:
             i+=1
         if i==9:
             return True
@@ -136,7 +137,7 @@ class environment:
 if __name__=='__main__':
     print('Running tests')
 
-    curr_state = environment()
+    curr_state = Environment()
     actions = curr_state.actions()
     new_state = curr_state.transistion(action=actions[0])
 
@@ -153,8 +154,7 @@ if __name__=='__main__':
     print("Path cost of resulting state : {}".format(new_state.path_cost))
 
     # create a goal state for testing purposes
-    goal = environment()
-    goal.state = [' ', '1', '2', '3', '4', '5', '6', '7', '8']
+    goal = Environment(goal=True)
 
     # testing goal_test() function
     print("Goal test on a goal state : {}".format(goal.goal_test(goal.state)))
