@@ -113,6 +113,12 @@ if __name__ == '__main__':
     # Testing purposes
     initial = TicTacToe()
     new = initial.transistion(initial.actions()[0])
+    terminal = TicTacToe()
+    terminal.state = ['X','O','X','O','X','O','X','O','X',]
+
+    print("{} \n is a terminal? {} ".format(initial.state, initial.terminal_test()))
+    print("{} \n is a terminal? {} ".format(new.state, new.terminal_test()))
+    print("{} \n is a terminal? {} ".format(terminal.state, terminal.terminal_test()))
 
     print("Actions on \n {} : \n {}".format(initial.state, initial.actions()))
     print("New state \n {} and actions on new state : \n {}".format(new.state, new.actions()))
