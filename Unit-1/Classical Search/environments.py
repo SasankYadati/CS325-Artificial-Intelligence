@@ -19,7 +19,7 @@ class EightPuzzle:
     Every state remembers the path cost it took to reach the current
     state from the initial state.
 
-    Every state has a reference to it's parent (state from which it
+    Every state has a reference to its parent (state from which it
     has been resulted from).
     '''
 
