@@ -98,10 +98,7 @@ class EightPuzzle:
         returns the resulting state.
         '''
 
-        result = EightPuzzle()
-
-        for i in range(0, 9):
-            result.state[i] = self.state[i]
+        result = EightPuzzle(initial_state=list(self.state))
 
         blank_pos = self.state.index(' ')
 
