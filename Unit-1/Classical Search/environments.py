@@ -6,7 +6,7 @@ date : 14/08/2017
 
 import random
 
-class EightPuzzleEnvironment:
+class EightPuzzle:
     '''
     The environment is a 8puzzle board.
     Each cell contains a number from 1 to 8 or is empty.
@@ -98,7 +98,7 @@ class EightPuzzleEnvironment:
         returns the resulting state.
         '''
 
-        result = EightPuzzleEnvironment()
+        result = EightPuzzle()
 
         for i in range(0, 9):
             result.state[i] = self.state[i]
@@ -137,7 +137,7 @@ class EightPuzzleEnvironment:
 if __name__=='__main__':
     print('Running tests')
 
-    curr_state = EightPuzzleEnvironment()
+    curr_state = EightPuzzle()
     actions = curr_state.actions()
     new_state = curr_state.transistion(action=actions[0])
 
@@ -154,9 +154,9 @@ if __name__=='__main__':
     print("Path cost of resulting state : {}".format(new_state.path_cost))
 
     # create a goal state for testing purposes
-    goal = EightPuzzleEnvironment(goal=True)
+    goal = EightPuzzle(goal=True)
 
     # testing goal_test() function
-    print("Goal test on a goal state : {}".format(goal.goal_test(goal.state)))
-    print("Goal test on current state : {}".format(curr_state.goal_test(goal.state)))
-    print("Goal test on resulting state : {}".format(new_state.goal_test(goal.state)))
+    print("Goal test on a goal state : {}".format(goal.goal_test(goal)))
+    print("Goal test on current state : {}".format(curr_state.goal_test(goal)))
+    print("Goal test on resulting state : {}".format(new_state.goal_test(goal)))
