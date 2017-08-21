@@ -1,12 +1,12 @@
 '''
-environment.py
+environments.py
 author : happystick
 date : 14/08/2017
 '''
 
 import random
 
-class Environment:
+class EightPuzzle:
     '''
     The environment is a 8puzzle board.
     Each cell contains a number from 1 to 8 or is empty.
@@ -19,7 +19,7 @@ class Environment:
     Every state remembers the path cost it took to reach the current
     state from the initial state.
 
-    Every state has a reference to the it's parent (state from which it
+    Every state has a reference to its parent (state from which it
     has been resulted from).
     '''
 
@@ -98,10 +98,7 @@ class Environment:
         returns the resulting state.
         '''
 
-        result = Environment()
-
-        for i in range(0, 9):
-            result.state[i] = self.state[i]
+        result = EightPuzzle(initial_state=list(self.state))
 
         blank_pos = self.state.index(' ')
 
@@ -137,7 +134,7 @@ class Environment:
 if __name__=='__main__':
     print('Running tests')
 
-    curr_state = Environment()
+    curr_state = EightPuzzle()
     actions = curr_state.actions()
     new_state = curr_state.transistion(action=actions[0])
 
@@ -154,9 +151,9 @@ if __name__=='__main__':
     print("Path cost of resulting state : {}".format(new_state.path_cost))
 
     # create a goal state for testing purposes
-    goal = Environment(goal=True)
+    goal = EightPuzzle(goal=True)
 
     # testing goal_test() function
-    print("Goal test on a goal state : {}".format(goal.goal_test(goal.state)))
-    print("Goal test on current state : {}".format(curr_state.goal_test(goal.state)))
-    print("Goal test on resulting state : {}".format(new_state.goal_test(goal.state)))
+    print("Goal test on a goal state : {}".format(goal.goal_test(goal)))
+    print("Goal test on current state : {}".format(curr_state.goal_test(goal)))
+    print("Goal test on resulting state : {}".format(new_state.goal_test(goal)))

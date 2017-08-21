@@ -4,7 +4,7 @@ author : happystick
 date : 14/08/2017
 '''
 
-from environment import Environment
+from environments import EightPuzzle
 
 class AStarAgent:
     '''
@@ -17,7 +17,7 @@ class AStarAgent:
     ** heuristics is a design characteristic which depends on the environment,
     but is defined by the agent.
 
-    Heuristic : No. of misplaced tiles on the board.
+    Heuristic : No. of misplaced tiles on the board for an EightPuzzle.
     '''
 
     def __init__(self):
@@ -29,7 +29,7 @@ class AStarAgent:
         '''
         returns the computed herustic value for a given environment state.
         '''
-        goal_state = Environment(goal=True) # returns a goal state
+        goal_state = EightPuzzle(goal=True) # returns a goal state
 
         heuristic_value = 0
         for i in range(0,9):
@@ -83,13 +83,13 @@ class AStarAgent:
 if __name__ == '__main__':
     # run some tests
     # test_agent = AStarAgent()
-    # test_state = environment(initial_state=[' ','1','2','3','4','5','6','8','7'])
+    # test_state = EightPuzzle(initial_state=[' ','1','2','3','4','5','6','8','7'])
     # print("Current state is : {}".format(test_state.state))
     # print("Heuristic value for current state : {}".format(test_agent.heuristic(test_state)))
 
     test_agent = AStarAgent()
-    initial = Environment(initial_state=['1','2','4','3',' ','8','5','6','7']) # a solvable initial state
-    goal = Environment(goal=True)
+    initial = EightPuzzle(initial_state=['1','4',' ','3','2','8','5','6','7']) # a solvable initial state for testing purposes
+    goal = EightPuzzle(goal=True)
     plan = test_agent.find_solution(initial, goal)
     for each_state in plan:
         print("------")
