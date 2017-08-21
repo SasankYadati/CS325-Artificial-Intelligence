@@ -80,7 +80,26 @@ class TicTacToe:
         '''
         returns true if self.state is an end state for the environment, false otherwise.
         '''
-        pass
+        # for all rows
+        for i in range(0,7,3):
+            if self.state[i]!=' ' and self.state[i]==self.state[i+1] and self.state[i+1]==self.state[i+2]:
+                return True
+        # for all columns
+        for i in range(0,3):
+            if self.state[i]!=' ' and self.state[i]==self.state[i+3] and self.state[i+3]==self.state[i+6]:
+                return True
+
+        # for the two diagonals
+        if self.state[0]!=' ' and self.state[0]==self.state[4] and self.state[4]==self.state[8]:
+            return True
+
+        elif self.state[2]!=' ' and self.state[2]==self.state[4] and self.state[4]==self.state[6]:
+            return True
+
+        if self.state.count(' ') > 0:
+            return False
+
+        return True # draw state
 
     def utility(self,player):
         '''
