@@ -27,9 +27,7 @@ class TicTacToe:
     '''
 
     def __init__(self):
-        self.state = [' ' for x in range(0,9)]
-
-        pass
+        self.state = [' ' for _ in range(0,9)]
 
     def actions(self):
         '''
@@ -43,7 +41,9 @@ class TicTacToe:
         '''
 
         actions = list()
-
+        for i in range(0,9):
+            if self.state[i]==' ':
+                actions.append(i+1)
         return actions
 
     def player(self):
@@ -53,19 +53,48 @@ class TicTacToe:
 
         returns 'X' or 'O' by determining the player who holds the turn.
         '''
-
+        # count no. of X's
+        x_count = self.state.count('X')
+        # count no. of O's
+        o_count = self.state.count('O')
+        if(x_count==o_count):
+            return 'X'
+        else:
+            return 'O'
         pass
 
     def transistion(self,action):
         '''
+        assumes "action" is valid in self.state.
 
+        performs "action" on self.state and returns the resulting state.
         '''
-        pass
+
+        result = TicTacToe()
+        result.state = list(self.state)
+        result.state[action-1] = result.player()
+
+        return result
 
     def terminal_test(self):
         '''
-
+        returns true if self.state is an end state for the environment, false otherwise.
         '''
         pass
 
-    def
+    def utility(self,player):
+        '''
+        assumes self.state is a terminal state.
+
+        returns the utility (score) for the player in self.state.
+        '''
+        pass
+
+if __name__ == '__main__':
+    # Testing purposes
+    initial = TicTacToe()
+    new = initial.transistion(initial.actions()[0])
+
+    print("Actions on \n {} : \n {}".format(initial.state, initial.actions()))
+    print("New state \n {} and actions on new state : \n {}".format(new.state, new.actions()))
+    print("Player in new : {}".format(new.player()))
