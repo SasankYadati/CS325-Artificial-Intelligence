@@ -1,12 +1,12 @@
 '''
-environment.py
+environments.py
 author : happystick
 date : 14/08/2017
 '''
 
 import random
 
-class Environment:
+class EightPuzzleEnvironment:
     '''
     The environment is a 8puzzle board.
     Each cell contains a number from 1 to 8 or is empty.
@@ -98,7 +98,7 @@ class Environment:
         returns the resulting state.
         '''
 
-        result = Environment()
+        result = EightPuzzleEnvironment()
 
         for i in range(0, 9):
             result.state[i] = self.state[i]
@@ -137,7 +137,7 @@ class Environment:
 if __name__=='__main__':
     print('Running tests')
 
-    curr_state = Environment()
+    curr_state = EightPuzzleEnvironment()
     actions = curr_state.actions()
     new_state = curr_state.transistion(action=actions[0])
 
@@ -154,7 +154,7 @@ if __name__=='__main__':
     print("Path cost of resulting state : {}".format(new_state.path_cost))
 
     # create a goal state for testing purposes
-    goal = Environment(goal=True)
+    goal = EightPuzzleEnvironment(goal=True)
 
     # testing goal_test() function
     print("Goal test on a goal state : {}".format(goal.goal_test(goal.state)))
