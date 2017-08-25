@@ -1,6 +1,6 @@
 
 '''
-astar.py
+ucs.py
 author : rusty
 date : 24/08/2017
 '''
@@ -16,10 +16,8 @@ class UCSAgent:
     by planning its way from initial state to the goal.
 
     Strategy: Expand the lowest cost node. 
-    Implementation: the frontier is a priority queue where lowest cost node has the highest priority. 
+    Implementation: The frontier is a priority queue where lowest cost node has the highest priority. 
     In order to be optimal, must test at expansion.
-
-
 
     Search Strategy : Uniform Cost Search 
     '''
