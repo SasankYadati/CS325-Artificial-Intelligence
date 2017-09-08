@@ -1,13 +1,11 @@
 import numpy as np
 import random
 
-a = np.random.normal(0, 0.1, 750)
-b = np.random.laplace(0, 1., 250)
+a = [[_, 0] for _ in np.random.normal(0, 0.1, 750)]
+b = [[_, 1] for _ in np.random.laplace(0, 1., 250)]
 x = np.concatenate([a, b])
 
-np.random.seed(42)
-random.shuffle(x)
+np.random.shuffle(x)
 
-for _ in x:
-    print(_)
-
+for i in x:
+    print(i[0], i[1], sep='    ')
